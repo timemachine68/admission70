@@ -26,6 +26,8 @@ body{background:radial-gradient(1200px 500px at 10% -10%,rgba(108,76,240,.10),tr
 h1{font-family:'Kanit',sans-serif;font-weight:800;font-size:clamp(28px,4vw,48px);line-height:1.12;letter-spacing:-.01em;margin:14px 0 8px;}
 h1 .grad{background:linear-gradient(100deg,var(--violet) 0%,var(--pink) 55%,var(--orange) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .sub{font-size:15.5px;color:var(--ink-soft);max-width:640px;line-height:1.65;margin-bottom:22px;}
+.dekd-btn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-family:'Sarabun',sans-serif;font-size:13.5px;font-weight:700;color:var(--violet-deep);background:rgba(108,76,240,.08);border:1.5px solid rgba(108,76,240,.25);border-radius:999px;padding:7px 16px;text-decoration:none;transition:all .15s;}
+.dekd-btn:hover{background:rgba(108,76,240,.15);border-color:var(--violet);color:var(--violet);}
 .searchbar{display:flex;align-items:center;gap:10px;background:var(--bg-panel);border:2px solid var(--line);border-radius:18px;padding:8px 8px 8px 18px;box-shadow:var(--shadow);transition:border-color .15s;}
 .searchbar:focus-within{border-color:var(--violet);}
 .searchbar svg{flex:none;color:var(--violet);}
@@ -190,71 +192,45 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
 .chart-legend i{width:11px;height:11px;border-radius:3px;display:inline-block;}
 
 /* ============ MY SCORE BANNER ============ */
-#scoreBanner{
-  background:linear-gradient(135deg,#1B1633 0%,#2D1B6B 50%,#1B3366 100%);
-  border-radius:20px;padding:20px 24px;margin:20px 0 0;
-  box-shadow:0 12px 40px -12px rgba(108,76,240,.45);
-  position:relative;overflow:hidden;
-}
-#scoreBanner::before{
-  content:"";position:absolute;top:-40px;right:-40px;
-  width:200px;height:200px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,94,158,.18),transparent 70%);
-  pointer-events:none;
-}
-.score-banner-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.score-banner-label{
-  font-family:'Kanit',sans-serif;font-weight:700;font-size:14px;color:rgba(255,255,255,.9);
-  white-space:nowrap;display:flex;align-items:center;gap:7px;
-}
-.score-banner-label .icon{font-size:18px;}
-.score-input-wrap{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:4px 6px 4px 14px;flex:1;min-width:200px;max-width:320px;transition:border-color .15s;}
-.score-input-wrap:focus-within{border-color:rgba(255,94,158,.7);background:rgba(255,255,255,.14);}
-.score-input-wrap input{flex:1;background:transparent;border:none;outline:none;font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:700;color:#fff;width:100%;min-width:0;}
-.score-input-wrap input::placeholder{color:rgba(255,255,255,.3);font-size:16px;}
-.score-input-wrap .unit{font-family:'Kanit',sans-serif;font-size:12px;color:rgba(255,255,255,.5);white-space:nowrap;}
-.score-clear{background:rgba(255,255,255,.12);border:none;color:rgba(255,255,255,.6);border-radius:10px;padding:8px 12px;cursor:pointer;font-size:13px;font-family:'Sarabun',sans-serif;font-weight:600;white-space:nowrap;}
-.score-clear:hover{background:rgba(255,255,255,.2);color:#fff;}
-.dek-d-link{display:inline-flex;align-items:center;gap:6px;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600;color:var(--pink);background:rgba(255,94,158,.15);border:1px solid rgba(255,94,158,.35);border-radius:10px;padding:8px 14px;text-decoration:none;white-space:nowrap;transition:all .15s;}
-.dek-d-link:hover{background:rgba(255,94,158,.28);border-color:var(--pink);}
-.score-banner-stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);}
-.score-stat{text-align:center;}
-.score-stat .s-num{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:20px;}
-.score-stat .s-lbl{font-size:11.5px;color:rgba(255,255,255,.55);margin-top:1px;}
-.score-stat.hit .s-num{color:#4ADE80;}
-.score-stat.maybe .s-num{color:#FCD34D;}
-.score-stat.miss .s-num{color:#F87171;}
-#scoreBanner .hint{font-size:12.5px;color:rgba(255,255,255,.45);margin-top:12px;line-height:1.6;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Chance badges on cards */
-.chance-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  font-family:'Kanit',sans-serif;font-size:12px;font-weight:700;
-  border-radius:999px;padding:4px 11px;white-space:nowrap;
-  flex:none;
-}
-.chance-badge.hit{background:rgba(74,222,128,.15);color:#16A34A;border:1.5px solid rgba(74,222,128,.4);}
-.chance-badge.maybe{background:rgba(252,211,77,.15);color:#B45309;border:1.5px solid rgba(252,211,77,.4);}
-.chance-badge.miss{background:rgba(248,113,113,.15);color:#DC2626;border:1.5px solid rgba(248,113,113,.4);}
-.chance-diff{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;opacity:.8;}
+
+
+
+
+
 
 /* Score mode extra sort option + filter chip */
-.score-filter-row{display:none;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0 0;}
-.score-filter-row.show{display:flex;}
-.chance-filter-btn{
-  font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600;
-  border:1.5px solid var(--line);background:var(--bg-panel);color:var(--ink-soft);
-  border-radius:10px;padding:7px 14px;cursor:pointer;transition:all .15s;white-space:nowrap;
-}
-.chance-filter-btn.active{background:linear-gradient(120deg,#16A34A,#15803D);border-color:transparent;color:#fff;box-shadow:0 4px 12px -4px rgba(22,163,74,.4);}
-.chance-filter-btn:hover:not(.active){border-color:var(--green);color:var(--green);}
-.score-sort-btn{
-  font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600;
-  border:1.5px solid var(--line);background:var(--bg-panel);color:var(--ink-soft);
-  border-radius:10px;padding:7px 14px;cursor:pointer;transition:all .15s;white-space:nowrap;
-}
-.score-sort-btn.active{background:linear-gradient(120deg,var(--violet),var(--violet-deep));border-color:transparent;color:#fff;}
-.score-sort-btn:hover:not(.active){border-color:var(--violet);color:var(--violet);}
+
+
+
+
+
+
+
+
 #campusRow{
   display:none;
   align-items:center;gap:8px;flex-wrap:wrap;
@@ -298,12 +274,12 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   <div class="hero">
     <span class="eyebrow"><span class="dot"></span>TCAS69 · รอบ 3 Admission · ข้อมูล 10 มิ.ย. 69</span>
     <h1>ค้นหาคะแนน <span class="grad">สูงสุด–ต่ำสุด</span><br>ทุกคณะ ทุกมหาวิทยาลัย</h1>
-    <p class="sub">ค้นหาชื่อ หรือกดเลือกหมวดหมู่ด้านล่าง · กด <b>+ เปรียบเทียบ</b> เพื่อเทียบกันสูงสุด 7 คณะ</p>
+    <p class="sub">ค้นหาชื่อ หรือกดเลือกหมวดหมู่ด้านล่าง · กด <b>+ เปรียบเทียบ</b> เพื่อเทียบกันสูงสุด 7 คณะ<br><a class="dekd-btn" href="https://www.dek-d.com/tcas/calculator/" target="_blank" rel="noopener">🧮 คำนวณคะแนน TCAS ที่ Dek-D ↗</a></p>
     <div class="searchbar">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
       <input id="searchInput" type="text" placeholder="เช่น วิศวกรรมคอมพิวเตอร์, จุฬาฯ, พยาบาลศาสตร์...">
       <button class="clear-btn" id="clearBtn">✕</button>
-      <span class="go-count" id="liveCount">2,053 หลักสูตร</span>
+      <span class="go-count" id="liveCount">2,330 หลักสูตร</span>
     </div>
     <div class="stats">
       <div class="stat s1"><div class="num" id="statTotal">–</div><div class="lbl">หลักสูตรทั้งหมด</div></div>
@@ -313,41 +289,6 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     </div>
   </div>
 
-  <!-- MY SCORE BANNER -->
-  <div id="scoreBanner">
-    <div class="score-banner-top">
-      <div class="score-banner-label"><span class="icon">🎯</span>คะแนนของฉัน</div>
-      <div class="score-input-wrap">
-        <input type="number" id="myScore" min="0" max="100" step="0.01" placeholder="เช่น 68.50">
-        <span class="unit">คะแนน</span>
-      </div>
-      <button class="score-clear" id="scoreClearBtn" style="display:none">ล้าง</button>
-      <a class="dek-d-link" href="https://www.dek-d.com/tcas/calculator/" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-3M13 3h8m0 0v8m0-8L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        คำนวณคะแนนที่ Dek-D
-      </a>
-    </div>
-    <div class="score-banner-stats" id="scoreSummary" style="display:none">
-      <div class="score-stat hit"><div class="s-num" id="sHit">0</div><div class="s-lbl">🟢 ติดชัวร์</div></div>
-      <div class="score-stat maybe"><div class="s-num" id="sMaybe">0</div><div class="s-lbl">🟡 ลุ้นได้</div></div>
-      <div class="score-stat miss"><div class="s-num" id="sMiss">0</div><div class="s-lbl">🔴 เกินเอื้อม</div></div>
-      <div class="score-stat" style="border-left:1px solid rgba(255,255,255,.15);padding-left:14px;margin-left:0;">
-        <div class="s-num" style="color:rgba(255,255,255,.9)" id="sTotal">0</div>
-        <div class="s-lbl">หลักสูตรทั้งหมด</div>
-      </div>
-    </div>
-    <div class="hint" id="scoreHint">กรอกคะแนนรวมที่คาดว่าจะได้ แล้วทุกการ์ดจะแสดงโอกาสสอบติดทันที<br>ยังไม่รู้คะแนน? กดลิงก์ด้านขวาเพื่อคำนวณที่ Dek-D ก่อนได้เลย</div>
-  </div>
-
-  <!-- SCORE MODE FILTER ROW -->
-  <div class="score-filter-row" id="scoreFilterRow">
-    <span style="font-size:12.5px;color:var(--ink-soft);font-weight:600;">แสดง:</span>
-    <button class="chance-filter-btn active" data-chance="all">ทั้งหมด</button>
-    <button class="chance-filter-btn" data-chance="hit">🟢 ติดชัวร์เท่านั้น</button>
-    <button class="chance-filter-btn" data-chance="maybe">🟡 ลุ้นได้เท่านั้น</button>
-    <button class="chance-filter-btn" data-chance="hitmay">🟢🟡 โอกาสมีเท่านั้น</button>
-    <button class="score-sort-btn active" id="scoreSortBtn">↕ เรียง: ใกล้ติดที่สุด</button>
-  </div>
 
   <!-- CATEGORY TABS -->
   <div class="cat-section">
@@ -387,9 +328,10 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   </div>
 
   <div class="results-head">
-    <h2>พบ <b id="resultCount">2,053</b> หลักสูตรที่ตรงเงื่อนไข</h2>
+    <h2>พบ <b id="resultCount">–</b> หลักสูตรที่ตรงเงื่อนไข</h2>
     <span class="active-cat-badge" id="activeCatBadge"></span>
   </div>
+
 
   <div class="cards" id="cardsContainer"></div>
   <button class="load-more" id="loadMoreBtn">แสดงเพิ่มอีก 40 รายการ</button>
@@ -433,9 +375,6 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   let activeCat = 'all';
   let activeCampus = 'all';
   let compareList = [];
-  let myScore = null;        // null = no score entered
-  let chanceFilter = 'all';  // 'all' | 'hit' | 'maybe' | 'hitmay'
-  let scoreSortActive = true; // sort by closest-to-cutoff when score entered
 
   // Build map: uni → sorted campuses (only multi-campus unis)
   const uniCampusMap = {};
@@ -459,114 +398,6 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   const compareModal = $('compareModal'), modalBody = $('modalBody'), modalClose = $('modalClose');
   const catTabsEl = $('catTabs'), activeCatBadge = $('activeCatBadge');
   const campusRow = $('campusRow'), campusChipsEl = $('campusChips');
-  const myScoreInput = $('myScore'), scoreClearBtn = $('scoreClearBtn');
-  const scoreSummary = $('scoreSummary'), scoreHint = $('scoreHint');
-  const sHit = $('sHit'), sMaybe = $('sMaybe'), sMiss = $('sMiss'), sTotal = $('sTotal');
-  const scoreFilterRow = $('scoreFilterRow'), scoreSortBtn = $('scoreSortBtn');
-
-  // ---- Score chance logic ----
-  // ±3 คะแนนถือว่า "ลุ้น", ต่ำกว่าคะแนนต่ำสุดเกิน 3 = เกินเอื้อม
-  const MAYBE_RANGE = 3;
-
-  function getChance(r){
-    if(myScore===null) return null;
-    const diff = myScore - r.mn; // บวก = สูงกว่า cutoff
-    if(diff >= MAYBE_RANGE) return 'hit';
-    if(diff >= -MAYBE_RANGE) return 'maybe';
-    return 'miss';
-  }
-
-  function chanceBadgeHtml(r){
-    const ch = getChance(r);
-    if(!ch) return '';
-    const diff = myScore - r.mn;
-    const diffStr = diff >= 0 ? `+${diff.toFixed(2)}` : diff.toFixed(2);
-    const map = {
-      hit:   ['hit',   '🟢 ติดชัวร์'],
-      maybe: ['maybe', '🟡 ลุ้นได้'],
-      miss:  ['miss',  '🔴 เกินเอื้อม'],
-    };
-    const [cls, lbl] = map[ch];
-    return `<span class="chance-badge ${cls}">${lbl}<span class="chance-diff">${diffStr}</span></span>`;
-  }
-
-  function updateScoreSummary(){
-    if(myScore===null){
-      scoreSummary.style.display='none';
-      scoreHint.style.display='';
-      scoreFilterRow.classList.remove('show');
-      return;
-    }
-    const pool = filtered.length ? filtered : RAW;
-    // count on full filtered set (before chance filter)
-    const base = (() => {
-      const q=myScoreInput.value; // use current filter state
-      return filtered;
-    })();
-    // recount on RAW filtered without chance filter for summary
-    const all = applyBaseFilter();
-    const hit   = all.filter(r=>getChance(r)==='hit').length;
-    const maybe = all.filter(r=>getChance(r)==='maybe').length;
-    const miss  = all.filter(r=>getChance(r)==='miss').length;
-    sHit.textContent   = hit;
-    sMaybe.textContent = maybe;
-    sMiss.textContent  = miss;
-    sTotal.textContent = all.length;
-    scoreSummary.style.display='flex';
-    scoreHint.style.display='none';
-    scoreFilterRow.classList.add('show');
-  }
-
-  // base filter without chance filter and without score sort
-  function applyBaseFilter(){
-    const q=myScoreInput.value.trim().toLowerCase();
-    const uniVal=uniSelect.value, facVal=facSelect.value;
-    let list=activeCat==='all'?RAW:RAW.filter(r=>r.cat===activeCat);
-    if(uniVal) list=list.filter(r=>r.u===uniVal);
-    if(uniVal && activeCampus!=='all') list=list.filter(r=>r.c===activeCampus);
-    if(facVal) list=list.filter(r=>r.f===facVal);
-    if(q) list=list.filter(r=>
-      r.u.toLowerCase().includes(q)||r.c.toLowerCase().includes(q)||
-      r.f.toLowerCase().includes(q)||r.p.toLowerCase().includes(q)||r.d.toLowerCase().includes(q)
-    );
-    return list;
-  }
-
-  // Score input handlers
-  myScoreInput.addEventListener('input', ()=>{
-    const v = parseFloat(myScoreInput.value);
-    myScore = (!isNaN(v) && v >= 0 && v <= 100) ? v : null;
-    scoreClearBtn.style.display = myScore!==null ? '' : 'none';
-    shown = PAGE_SIZE;
-    doFilter();
-  });
-  scoreClearBtn.addEventListener('click', ()=>{
-    myScoreInput.value='';
-    myScore=null;
-    chanceFilter='all';
-    scoreClearBtn.style.display='none';
-    document.querySelectorAll('.chance-filter-btn').forEach(b=>b.classList.toggle('active', b.dataset.chance==='all'));
-    scoreFilterRow.classList.remove('show');
-    scoreSummary.style.display='none';
-    scoreHint.style.display='';
-    shown=PAGE_SIZE; doFilter();
-  });
-
-  // Chance filter buttons
-  $('scoreFilterRow').addEventListener('click', e=>{
-    const btn = e.target.closest('.chance-filter-btn');
-    if(btn){
-      chanceFilter = btn.dataset.chance;
-      document.querySelectorAll('.chance-filter-btn').forEach(b=>b.classList.toggle('active', b===btn));
-      shown=PAGE_SIZE; doFilter(); return;
-    }
-    if(e.target.closest('#scoreSortBtn')){
-      scoreSortActive=!scoreSortActive;
-      scoreSortBtn.classList.toggle('active', scoreSortActive);
-      scoreSortBtn.textContent = scoreSortActive ? '↕ เรียง: ใกล้ติดที่สุด' : '↕ เรียง: ปกติ';
-      shown=PAGE_SIZE; doFilter();
-    }
-  });
 
   // ---- Campus sub-filter ----
   function buildCampusChips(uniVal){
@@ -706,11 +537,6 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     const colorIdx=sel?compareList.findIndex(x=>recordKey(x)===recordKey(r)):-1;
     const dotStyle=sel&&colorIdx>=0?`style="background:${getCSSVar(COLORS[colorIdx])};width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:3px;"`:'' ;
     const catChip=activeCat==='all'?`<span class="cat-chip">${r.cat}</span>`:'';
-    const chHtml = chanceBadgeHtml(r);
-    // marker showing my score on rangebar
-    const myMarker = myScore!==null
-      ? `<div class="marker" style="left:${Math.max(0,Math.min(100,myScore))}%;background:var(--pink);z-index:2;width:3px;height:18px;top:-5px;border-radius:3px;" title="คะแนนของฉัน: ${myScore}"></div>`
-      : '';
     return `<div class="card${sel?' selected':''}">
       <div class="card-top">
         <div>
@@ -720,7 +546,6 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
           ${detailHtml}
         </div>
         <div class="card-actions">
-          ${chHtml}
           <span class="badge ${cls}">${compLabel(r)}</span>
           <button class="btn-compare${sel?' in-compare':''}" onclick="toggleCompare(${escJs(recordKey(r))})">${sel?`<span ${dotStyle}></span>`:''}${btnTxt}</button>
         </div>
@@ -733,9 +558,8 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
             <div class="fill" style="left:${minPct}%;width:${Math.max(1,maxPct-minPct)}%;"></div>
             <div class="marker" style="left:${minPct}%;"></div>
             <div class="marker" style="left:${maxPct}%;"></div>
-            ${myMarker}
           </div>
-          <div class="labels"><span>ต่ำสุด <b>${r.mn.toFixed(2)}</b></span>${myScore!==null?`<span style="color:var(--pink);font-weight:700;">ฉัน: ${myScore.toFixed(2)}</span>`:''}<span>สูงสุด <b>${r.mx.toFixed(2)}</b></span></div>
+          <div class="labels"><span>ต่ำสุด <b>${r.mn.toFixed(2)}</b></span><span>สูงสุด <b>${r.mx.toFixed(2)}</b></span></div>
         </div>
       </div>
     </div>`;
@@ -847,15 +671,6 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   // ---- Sort / Filter ----
   function applySort(list){
     const copy=list.slice();
-    if(myScore!==null && scoreSortActive){
-      const order={hit:0,maybe:1,miss:2};
-      copy.sort((a,b)=>{
-        const ca=getChance(a)||'miss', cb=getChance(b)||'miss';
-        if(order[ca]!==order[cb]) return order[ca]-order[cb];
-        return Math.abs(myScore-a.mn)-Math.abs(myScore-b.mn);
-      });
-      return copy;
-    }
     const s=sortSelect.value;
     if(s==='minDesc') copy.sort((a,b)=>b.mn-a.mn);
     else if(s==='minAsc') copy.sort((a,b)=>a.mn-b.mn);
@@ -877,13 +692,8 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
       r.u.toLowerCase().includes(sq)||r.c.toLowerCase().includes(sq)||
       r.f.toLowerCase().includes(sq)||r.p.toLowerCase().includes(sq)||r.d.toLowerCase().includes(sq)
     );
-    if(myScore!==null && chanceFilter!=='all'){
-      if(chanceFilter==='hitmay') list=list.filter(r=>getChance(r)!=='miss');
-      else list=list.filter(r=>getChance(r)===chanceFilter);
-    }
     filtered=applySort(list);
     shown=PAGE_SIZE;
-    updateScoreSummary();
     render();
   }
 
