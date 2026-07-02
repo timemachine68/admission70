@@ -189,19 +189,82 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
 .chart-legend span{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--ink-soft);}
 .chart-legend i{width:11px;height:11px;border-radius:3px;display:inline-block;}
 
-/* ============ CAMPUS SUB-FILTER ============ */
+/* ============ MY SCORE BANNER ============ */
+#scoreBanner{
+  background:linear-gradient(135deg,#1B1633 0%,#2D1B6B 50%,#1B3366 100%);
+  border-radius:20px;padding:20px 24px;margin:20px 0 0;
+  box-shadow:0 12px 40px -12px rgba(108,76,240,.45);
+  position:relative;overflow:hidden;
+}
+#scoreBanner::before{
+  content:"";position:absolute;top:-40px;right:-40px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,94,158,.18),transparent 70%);
+  pointer-events:none;
+}
+.score-banner-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.score-banner-label{
+  font-family:'Kanit',sans-serif;font-weight:700;font-size:14px;color:rgba(255,255,255,.9);
+  white-space:nowrap;display:flex;align-items:center;gap:7px;
+}
+.score-banner-label .icon{font-size:18px;}
+.score-input-wrap{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:4px 6px 4px 14px;flex:1;min-width:200px;max-width:320px;transition:border-color .15s;}
+.score-input-wrap:focus-within{border-color:rgba(255,94,158,.7);background:rgba(255,255,255,.14);}
+.score-input-wrap input{flex:1;background:transparent;border:none;outline:none;font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:700;color:#fff;width:100%;min-width:0;}
+.score-input-wrap input::placeholder{color:rgba(255,255,255,.3);font-size:16px;}
+.score-input-wrap .unit{font-family:'Kanit',sans-serif;font-size:12px;color:rgba(255,255,255,.5);white-space:nowrap;}
+.score-clear{background:rgba(255,255,255,.12);border:none;color:rgba(255,255,255,.6);border-radius:10px;padding:8px 12px;cursor:pointer;font-size:13px;font-family:'Sarabun',sans-serif;font-weight:600;white-space:nowrap;}
+.score-clear:hover{background:rgba(255,255,255,.2);color:#fff;}
+.dek-d-link{display:inline-flex;align-items:center;gap:6px;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600;color:var(--pink);background:rgba(255,94,158,.15);border:1px solid rgba(255,94,158,.35);border-radius:10px;padding:8px 14px;text-decoration:none;white-space:nowrap;transition:all .15s;}
+.dek-d-link:hover{background:rgba(255,94,158,.28);border-color:var(--pink);}
+.score-banner-stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);}
+.score-stat{text-align:center;}
+.score-stat .s-num{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:20px;}
+.score-stat .s-lbl{font-size:11.5px;color:rgba(255,255,255,.55);margin-top:1px;}
+.score-stat.hit .s-num{color:#4ADE80;}
+.score-stat.maybe .s-num{color:#FCD34D;}
+.score-stat.miss .s-num{color:#F87171;}
+#scoreBanner .hint{font-size:12.5px;color:rgba(255,255,255,.45);margin-top:12px;line-height:1.6;}
+
+/* Chance badges on cards */
+.chance-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:'Kanit',sans-serif;font-size:12px;font-weight:700;
+  border-radius:999px;padding:4px 11px;white-space:nowrap;
+  flex:none;
+}
+.chance-badge.hit{background:rgba(74,222,128,.15);color:#16A34A;border:1.5px solid rgba(74,222,128,.4);}
+.chance-badge.maybe{background:rgba(252,211,77,.15);color:#B45309;border:1.5px solid rgba(252,211,77,.4);}
+.chance-badge.miss{background:rgba(248,113,113,.15);color:#DC2626;border:1.5px solid rgba(248,113,113,.4);}
+.chance-diff{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;opacity:.8;}
+
+/* Score mode extra sort option + filter chip */
+.score-filter-row{display:none;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0 0;}
+.score-filter-row.show{display:flex;}
+.chance-filter-btn{
+  font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600;
+  border:1.5px solid var(--line);background:var(--bg-panel);color:var(--ink-soft);
+  border-radius:10px;padding:7px 14px;cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.chance-filter-btn.active{background:linear-gradient(120deg,#16A34A,#15803D);border-color:transparent;color:#fff;box-shadow:0 4px 12px -4px rgba(22,163,74,.4);}
+.chance-filter-btn:hover:not(.active){border-color:var(--green);color:var(--green);}
+.score-sort-btn{
+  font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600;
+  border:1.5px solid var(--line);background:var(--bg-panel);color:var(--ink-soft);
+  border-radius:10px;padding:7px 14px;cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.score-sort-btn.active{background:linear-gradient(120deg,var(--violet),var(--violet-deep));border-color:transparent;color:#fff;}
+.score-sort-btn:hover:not(.active){border-color:var(--violet);color:var(--violet);}
 #campusRow{
   display:none;
   align-items:center;gap:8px;flex-wrap:wrap;
-  margin:-2px 0 4px;
+  margin:6px 0 4px;
   padding:12px 16px;
   background:linear-gradient(135deg,rgba(108,76,240,.05),rgba(0,198,184,.05));
   border:1.5px solid rgba(108,76,240,.18);
   border-radius:14px;
-  animation:slideDown .2s ease;
 }
 #campusRow.show{display:flex;}
-@keyframes slideDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 .campus-label{font-family:'Kanit',sans-serif;font-size:12.5px;font-weight:600;color:var(--violet-deep);white-space:nowrap;display:flex;align-items:center;gap:5px;}
 .campus-label svg{flex:none;}
 .campus-chips{display:flex;gap:6px;flex-wrap:wrap;flex:1;}
@@ -210,6 +273,7 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   border:1.5px solid var(--line);background:var(--bg-panel);color:var(--ink-soft);
   border-radius:10px;padding:6px 13px;cursor:pointer;
   transition:all .14s ease;white-space:nowrap;
+  user-select:none;
 }
 .campus-chip:hover{border-color:var(--cyan);color:var(--cyan);}
 .campus-chip.active{
@@ -218,7 +282,7 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   box-shadow:0 4px 12px -4px rgba(0,198,184,.5);
 }
 .campus-chip.all-campus{font-style:italic;}
-.campus-count{font-size:11px;font-weight:600;opacity:.75;margin-left:3px;font-family:'IBM Plex Mono',monospace;}
+.campus-count{font-size:11px;font-weight:600;opacity:.75;margin-left:4px;font-family:'IBM Plex Mono',monospace;}
 
 @media(max-width:720px){
   .stats{grid-template-columns:repeat(2,1fr);}
@@ -247,6 +311,42 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
       <div class="stat s3"><div class="num" id="statSeats">–</div><div class="lbl">ที่นั่งรับรวม (คน)</div></div>
       <div class="stat s4"><div class="num" id="statComp">–</div><div class="lbl">อัตราแข่งขันเฉลี่ย (สมัคร:รับ)</div></div>
     </div>
+  </div>
+
+  <!-- MY SCORE BANNER -->
+  <div id="scoreBanner">
+    <div class="score-banner-top">
+      <div class="score-banner-label"><span class="icon">🎯</span>คะแนนของฉัน</div>
+      <div class="score-input-wrap">
+        <input type="number" id="myScore" min="0" max="100" step="0.01" placeholder="เช่น 68.50">
+        <span class="unit">คะแนน</span>
+      </div>
+      <button class="score-clear" id="scoreClearBtn" style="display:none">ล้าง</button>
+      <a class="dek-d-link" href="https://www.dek-d.com/tcas/calculator/" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-3M13 3h8m0 0v8m0-8L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        คำนวณคะแนนที่ Dek-D
+      </a>
+    </div>
+    <div class="score-banner-stats" id="scoreSummary" style="display:none">
+      <div class="score-stat hit"><div class="s-num" id="sHit">0</div><div class="s-lbl">🟢 ติดชัวร์</div></div>
+      <div class="score-stat maybe"><div class="s-num" id="sMaybe">0</div><div class="s-lbl">🟡 ลุ้นได้</div></div>
+      <div class="score-stat miss"><div class="s-num" id="sMiss">0</div><div class="s-lbl">🔴 เกินเอื้อม</div></div>
+      <div class="score-stat" style="border-left:1px solid rgba(255,255,255,.15);padding-left:14px;margin-left:0;">
+        <div class="s-num" style="color:rgba(255,255,255,.9)" id="sTotal">0</div>
+        <div class="s-lbl">หลักสูตรทั้งหมด</div>
+      </div>
+    </div>
+    <div class="hint" id="scoreHint">กรอกคะแนนรวมที่คาดว่าจะได้ แล้วทุกการ์ดจะแสดงโอกาสสอบติดทันที<br>ยังไม่รู้คะแนน? กดลิงก์ด้านขวาเพื่อคำนวณที่ Dek-D ก่อนได้เลย</div>
+  </div>
+
+  <!-- SCORE MODE FILTER ROW -->
+  <div class="score-filter-row" id="scoreFilterRow">
+    <span style="font-size:12.5px;color:var(--ink-soft);font-weight:600;">แสดง:</span>
+    <button class="chance-filter-btn active" data-chance="all">ทั้งหมด</button>
+    <button class="chance-filter-btn" data-chance="hit">🟢 ติดชัวร์เท่านั้น</button>
+    <button class="chance-filter-btn" data-chance="maybe">🟡 ลุ้นได้เท่านั้น</button>
+    <button class="chance-filter-btn" data-chance="hitmay">🟢🟡 โอกาสมีเท่านั้น</button>
+    <button class="score-sort-btn active" id="scoreSortBtn">↕ เรียง: ใกล้ติดที่สุด</button>
   </div>
 
   <!-- CATEGORY TABS -->
@@ -331,8 +431,11 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   let shown = PAGE_SIZE;
   let filtered = RAW;
   let activeCat = 'all';
-  let activeCampus = 'all'; // 'all' or specific campus name
+  let activeCampus = 'all';
   let compareList = [];
+  let myScore = null;        // null = no score entered
+  let chanceFilter = 'all';  // 'all' | 'hit' | 'maybe' | 'hitmay'
+  let scoreSortActive = true; // sort by closest-to-cutoff when score entered
 
   // Build map: uni → sorted campuses (only multi-campus unis)
   const uniCampusMap = {};
@@ -356,35 +459,153 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   const compareModal = $('compareModal'), modalBody = $('modalBody'), modalClose = $('modalClose');
   const catTabsEl = $('catTabs'), activeCatBadge = $('activeCatBadge');
   const campusRow = $('campusRow'), campusChipsEl = $('campusChips');
+  const myScoreInput = $('myScore'), scoreClearBtn = $('scoreClearBtn');
+  const scoreSummary = $('scoreSummary'), scoreHint = $('scoreHint');
+  const sHit = $('sHit'), sMaybe = $('sMaybe'), sMiss = $('sMiss'), sTotal = $('sTotal');
+  const scoreFilterRow = $('scoreFilterRow'), scoreSortBtn = $('scoreSortBtn');
+
+  // ---- Score chance logic ----
+  // ±3 คะแนนถือว่า "ลุ้น", ต่ำกว่าคะแนนต่ำสุดเกิน 3 = เกินเอื้อม
+  const MAYBE_RANGE = 3;
+
+  function getChance(r){
+    if(myScore===null) return null;
+    const diff = myScore - r.mn; // บวก = สูงกว่า cutoff
+    if(diff >= MAYBE_RANGE) return 'hit';
+    if(diff >= -MAYBE_RANGE) return 'maybe';
+    return 'miss';
+  }
+
+  function chanceBadgeHtml(r){
+    const ch = getChance(r);
+    if(!ch) return '';
+    const diff = myScore - r.mn;
+    const diffStr = diff >= 0 ? `+${diff.toFixed(2)}` : diff.toFixed(2);
+    const map = {
+      hit:   ['hit',   '🟢 ติดชัวร์'],
+      maybe: ['maybe', '🟡 ลุ้นได้'],
+      miss:  ['miss',  '🔴 เกินเอื้อม'],
+    };
+    const [cls, lbl] = map[ch];
+    return `<span class="chance-badge ${cls}">${lbl}<span class="chance-diff">${diffStr}</span></span>`;
+  }
+
+  function updateScoreSummary(){
+    if(myScore===null){
+      scoreSummary.style.display='none';
+      scoreHint.style.display='';
+      scoreFilterRow.classList.remove('show');
+      return;
+    }
+    const pool = filtered.length ? filtered : RAW;
+    // count on full filtered set (before chance filter)
+    const base = (() => {
+      const q=myScoreInput.value; // use current filter state
+      return filtered;
+    })();
+    // recount on RAW filtered without chance filter for summary
+    const all = applyBaseFilter();
+    const hit   = all.filter(r=>getChance(r)==='hit').length;
+    const maybe = all.filter(r=>getChance(r)==='maybe').length;
+    const miss  = all.filter(r=>getChance(r)==='miss').length;
+    sHit.textContent   = hit;
+    sMaybe.textContent = maybe;
+    sMiss.textContent  = miss;
+    sTotal.textContent = all.length;
+    scoreSummary.style.display='flex';
+    scoreHint.style.display='none';
+    scoreFilterRow.classList.add('show');
+  }
+
+  // base filter without chance filter and without score sort
+  function applyBaseFilter(){
+    const q=myScoreInput.value.trim().toLowerCase();
+    const uniVal=uniSelect.value, facVal=facSelect.value;
+    let list=activeCat==='all'?RAW:RAW.filter(r=>r.cat===activeCat);
+    if(uniVal) list=list.filter(r=>r.u===uniVal);
+    if(uniVal && activeCampus!=='all') list=list.filter(r=>r.c===activeCampus);
+    if(facVal) list=list.filter(r=>r.f===facVal);
+    if(q) list=list.filter(r=>
+      r.u.toLowerCase().includes(q)||r.c.toLowerCase().includes(q)||
+      r.f.toLowerCase().includes(q)||r.p.toLowerCase().includes(q)||r.d.toLowerCase().includes(q)
+    );
+    return list;
+  }
+
+  // Score input handlers
+  myScoreInput.addEventListener('input', ()=>{
+    const v = parseFloat(myScoreInput.value);
+    myScore = (!isNaN(v) && v >= 0 && v <= 100) ? v : null;
+    scoreClearBtn.style.display = myScore!==null ? '' : 'none';
+    shown = PAGE_SIZE;
+    doFilter();
+  });
+  scoreClearBtn.addEventListener('click', ()=>{
+    myScoreInput.value='';
+    myScore=null;
+    chanceFilter='all';
+    scoreClearBtn.style.display='none';
+    document.querySelectorAll('.chance-filter-btn').forEach(b=>b.classList.toggle('active', b.dataset.chance==='all'));
+    scoreFilterRow.classList.remove('show');
+    scoreSummary.style.display='none';
+    scoreHint.style.display='';
+    shown=PAGE_SIZE; doFilter();
+  });
+
+  // Chance filter buttons
+  $('scoreFilterRow').addEventListener('click', e=>{
+    const btn = e.target.closest('.chance-filter-btn');
+    if(btn){
+      chanceFilter = btn.dataset.chance;
+      document.querySelectorAll('.chance-filter-btn').forEach(b=>b.classList.toggle('active', b===btn));
+      shown=PAGE_SIZE; doFilter(); return;
+    }
+    if(e.target.closest('#scoreSortBtn')){
+      scoreSortActive=!scoreSortActive;
+      scoreSortBtn.classList.toggle('active', scoreSortActive);
+      scoreSortBtn.textContent = scoreSortActive ? '↕ เรียง: ใกล้ติดที่สุด' : '↕ เรียง: ปกติ';
+      shown=PAGE_SIZE; doFilter();
+    }
+  });
 
   // ---- Campus sub-filter ----
   function buildCampusChips(uniVal){
     const campuses = uniCampusMap[uniVal];
     if(!campuses){
       campusRow.classList.remove('show');
-      activeCampus='all';
+      activeCampus = 'all';
       return;
     }
-    // Count records per campus (within current cat filter too)
     const pool = activeCat==='all' ? RAW : RAW.filter(r=>r.cat===activeCat);
     const countAll = pool.filter(r=>r.u===uniVal).length;
 
-    let html=`<button class="campus-chip all-campus${activeCampus==='all'?' active':''}" onclick="setCampus('all')">ทุกวิทยาเขต<span class="campus-count">${countAll}</span></button>`;
+    let html = `<button class="campus-chip all-campus" data-campus="all">ทุกวิทยาเขต<span class="campus-count">${countAll}</span></button>`;
     campuses.forEach(c=>{
-      const cnt = pool.filter(r=>r.u===uniVal&&r.c===c).length;
-      html+=`<button class="campus-chip${activeCampus===c?' active':''}" onclick="setCampus(${JSON.stringify(c)})">${c}<span class="campus-count">${cnt}</span></button>`;
+      const cnt = pool.filter(r=>r.u===uniVal && r.c===c).length;
+      html += `<button class="campus-chip" data-campus="${c.replace(/"/g,'&quot;')}">${c}<span class="campus-count">${cnt}</span></button>`;
     });
-    campusChipsEl.innerHTML=html;
+    campusChipsEl.innerHTML = html;
+    updateCampusActiveState();
     campusRow.classList.add('show');
   }
 
-  window.setCampus = function(c){
-    activeCampus=c;
-    // re-render chips to update active state
-    buildCampusChips(uniSelect.value);
-    shown=PAGE_SIZE;
+  function updateCampusActiveState(){
+    campusChipsEl.querySelectorAll('.campus-chip').forEach(btn=>{
+      btn.classList.toggle('active', btn.dataset.campus === activeCampus);
+    });
+  }
+
+  // Event delegation — one listener on the container, never breaks on innerHTML refresh
+  campusChipsEl.addEventListener('click', e=>{
+    const chip = e.target.closest('.campus-chip');
+    if(!chip) return;
+    activeCampus = chip.dataset.campus;
+    updateCampusActiveState();
+    facSelect.value = '';
+    refreshFacultyOptions();
+    shown = PAGE_SIZE;
     doFilter();
-  };
+  });
 
   function getCSSVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
   function uniq(arr){ return [...new Set(arr)].sort((a,b)=>a.localeCompare(b,'th')); }
@@ -484,8 +705,12 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     const btnTxt=sel?'✓ เพิ่มแล้ว (ถอด)':'+ เปรียบเทียบ';
     const colorIdx=sel?compareList.findIndex(x=>recordKey(x)===recordKey(r)):-1;
     const dotStyle=sel&&colorIdx>=0?`style="background:${getCSSVar(COLORS[colorIdx])};width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:3px;"`:'' ;
-    // cat chip (only shown when 'all' tab)
     const catChip=activeCat==='all'?`<span class="cat-chip">${r.cat}</span>`:'';
+    const chHtml = chanceBadgeHtml(r);
+    // marker showing my score on rangebar
+    const myMarker = myScore!==null
+      ? `<div class="marker" style="left:${Math.max(0,Math.min(100,myScore))}%;background:var(--pink);z-index:2;width:3px;height:18px;top:-5px;border-radius:3px;" title="คะแนนของฉัน: ${myScore}"></div>`
+      : '';
     return `<div class="card${sel?' selected':''}">
       <div class="card-top">
         <div>
@@ -495,6 +720,7 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
           ${detailHtml}
         </div>
         <div class="card-actions">
+          ${chHtml}
           <span class="badge ${cls}">${compLabel(r)}</span>
           <button class="btn-compare${sel?' in-compare':''}" onclick="toggleCompare(${escJs(recordKey(r))})">${sel?`<span ${dotStyle}></span>`:''}${btnTxt}</button>
         </div>
@@ -507,8 +733,9 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
             <div class="fill" style="left:${minPct}%;width:${Math.max(1,maxPct-minPct)}%;"></div>
             <div class="marker" style="left:${minPct}%;"></div>
             <div class="marker" style="left:${maxPct}%;"></div>
+            ${myMarker}
           </div>
-          <div class="labels"><span>ต่ำสุด <b>${r.mn.toFixed(2)}</b></span><span>สูงสุด <b>${r.mx.toFixed(2)}</b></span></div>
+          <div class="labels"><span>ต่ำสุด <b>${r.mn.toFixed(2)}</b></span>${myScore!==null?`<span style="color:var(--pink);font-weight:700;">ฉัน: ${myScore.toFixed(2)}</span>`:''}<span>สูงสุด <b>${r.mx.toFixed(2)}</b></span></div>
         </div>
       </div>
     </div>`;
@@ -603,17 +830,7 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   compareModal.addEventListener('click',e=>{if(e.target===compareModal){compareModal.classList.remove('open');document.body.style.overflow='';}});
   btnClearCompare.addEventListener('click',()=>{compareList=[];updateTray();render();});
 
-  // ---- Sort / Filter ----
-  function applySort(list){
-    const s=sortSelect.value, copy=list.slice();
-    if(s==='minDesc') copy.sort((a,b)=>b.mn-a.mn);
-    else if(s==='minAsc') copy.sort((a,b)=>a.mn-b.mn);
-    else if(s==='compAsc') copy.sort((a,b)=>(a.k??999)-(b.k??999));
-    else if(s==='compDesc') copy.sort((a,b)=>(b.k??-1)-(a.k??-1));
-    else if(s==='seatsDesc') copy.sort((a,b)=>b.q-a.q);
-    return copy;
-  }
-
+  // ---- Render ----
   function render(){
     const list=filtered.slice(0,shown);
     if(!filtered.length){
@@ -627,22 +844,49 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     liveCount.textContent=fmt(filtered.length)+' หลักสูตร';
   }
 
+  // ---- Sort / Filter ----
+  function applySort(list){
+    const copy=list.slice();
+    if(myScore!==null && scoreSortActive){
+      const order={hit:0,maybe:1,miss:2};
+      copy.sort((a,b)=>{
+        const ca=getChance(a)||'miss', cb=getChance(b)||'miss';
+        if(order[ca]!==order[cb]) return order[ca]-order[cb];
+        return Math.abs(myScore-a.mn)-Math.abs(myScore-b.mn);
+      });
+      return copy;
+    }
+    const s=sortSelect.value;
+    if(s==='minDesc') copy.sort((a,b)=>b.mn-a.mn);
+    else if(s==='minAsc') copy.sort((a,b)=>a.mn-b.mn);
+    else if(s==='compAsc') copy.sort((a,b)=>(a.k??999)-(b.k??999));
+    else if(s==='compDesc') copy.sort((a,b)=>(b.k??-1)-(a.k??-1));
+    else if(s==='seatsDesc') copy.sort((a,b)=>b.q-a.q);
+    return copy;
+  }
+
   function doFilter(){
-    const q=searchInput.value.trim().toLowerCase();
+    const sq=searchInput.value.trim().toLowerCase();
     const uniVal=uniSelect.value, facVal=facSelect.value;
-    clearBtn.classList.toggle('show',q.length>0);
+    clearBtn.classList.toggle('show', sq.length>0);
     let list=activeCat==='all'?RAW:RAW.filter(r=>r.cat===activeCat);
     if(uniVal) list=list.filter(r=>r.u===uniVal);
     if(uniVal && activeCampus!=='all') list=list.filter(r=>r.c===activeCampus);
     if(facVal) list=list.filter(r=>r.f===facVal);
-    if(q) list=list.filter(r=>
-      r.u.toLowerCase().includes(q)||r.c.toLowerCase().includes(q)||
-      r.f.toLowerCase().includes(q)||r.p.toLowerCase().includes(q)||r.d.toLowerCase().includes(q)
+    if(sq) list=list.filter(r=>
+      r.u.toLowerCase().includes(sq)||r.c.toLowerCase().includes(sq)||
+      r.f.toLowerCase().includes(sq)||r.p.toLowerCase().includes(sq)||r.d.toLowerCase().includes(sq)
     );
+    if(myScore!==null && chanceFilter!=='all'){
+      if(chanceFilter==='hitmay') list=list.filter(r=>getChance(r)!=='miss');
+      else list=list.filter(r=>getChance(r)===chanceFilter);
+    }
     filtered=applySort(list);
     shown=PAGE_SIZE;
+    updateScoreSummary();
     render();
   }
+
 
   let debounceT;
   searchInput.addEventListener('input',()=>{clearTimeout(debounceT);debounceT=setTimeout(doFilter,120);});
