@@ -260,6 +260,16 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
 .campus-chip.all-campus{font-style:italic;}
 .campus-count{font-size:11px;font-weight:600;opacity:.75;margin-left:4px;font-family:'IBM Plex Mono',monospace;}
 
+.req-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px;}
+.req-label{font-family:'Kanit',sans-serif;font-size:12px;font-weight:600;color:var(--ink-soft);margin-right:2px;}
+.req-chip{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;border-radius:7px;padding:3px 9px;white-space:nowrap;border:1.5px solid transparent;}
+.req-chip.tgat{background:rgba(0,198,184,.12);color:#00867D;border-color:rgba(0,198,184,.35);}
+.req-chip.tpat{background:rgba(108,76,240,.10);color:var(--violet-deep);border-color:rgba(108,76,240,.35);}
+.req-chip.alv{background:rgba(255,150,64,.14);color:#C46A17;border-color:rgba(255,150,64,.4);}
+.req-chip.est{border-style:dashed;}
+.req-note{font-size:11px;color:var(--ink-soft);font-style:italic;}
+.req-hint{font-size:12px;color:var(--ink-soft);margin:6px 2px 0;line-height:1.6;}
+.req-hint b{color:var(--ink);}
 @media(max-width:720px){
   .stats{grid-template-columns:repeat(2,1fr);}
   .card-top{flex-direction:column;}
@@ -277,7 +287,7 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     <p class="sub">ค้นหาชื่อ หรือกดเลือกหมวดหมู่ด้านล่าง · กด <b>+ เปรียบเทียบ</b> เพื่อเทียบกันสูงสุด 7 คณะ<br><a class="dekd-btn" href="https://www.dek-d.com/tcas/calculator/" target="_blank" rel="noopener">🧮 คำนวณคะแนน TCAS ที่ Dek-D ↗</a></p>
     <div class="searchbar">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-      <input id="searchInput" type="text" placeholder="เช่น วิศวกรรมคอมพิวเตอร์, จุฬาฯ, พยาบาลศาสตร์...">
+      <input id="searchInput" type="text" placeholder="เช่น วิศวกรรมคอมพิวเตอร์, จุฬาฯ, TPAT3...">
       <button class="clear-btn" id="clearBtn">✕</button>
       <span class="go-count" id="liveCount">2,330 หลักสูตร</span>
     </div>
@@ -300,6 +310,15 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     <span class="filter-label">กรอง:</span>
     <select id="uniSelect"><option value="">ทุกสถาบัน</option></select>
     <select id="facSelect"><option value="">ทุกคณะ</option></select>
+    <select id="reqSelect">
+      <option value="">ทุกวิชาสอบ (TPAT)</option>
+      <option value="TPAT1">TPAT1 ความถนัดแพทย์</option>
+      <option value="TPAT2">TPAT2 ศิลปกรรมศาสตร์</option>
+      <option value="TPAT3">TPAT3 วิทย์-เทคโนโลยี-วิศวกรรม</option>
+      <option value="TPAT4">TPAT4 สถาปัตยกรรมศาสตร์</option>
+      <option value="TPAT5">TPAT5 ครุศาสตร์-ศึกษาศาสตร์</option>
+      <option value="NONE">ไม่ใช้ TPAT (ใช้ TGAT/A-Level)</option>
+    </select>
     <select id="sortSelect">
       <option value="default">เรียงตามไฟล์ต้นฉบับ</option>
       <option value="minDesc">คะแนนต่ำสุด: มาก → น้อย</option>
@@ -326,6 +345,8 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     <span><i style="background:var(--red)"></i>แข่งขันสูง (&gt; 10 เท่า)</span>
     <span><i style="background:linear-gradient(90deg,var(--cyan),var(--pink))"></i>แถบ = ช่วงคะแนน (สเกล 0–100)</span>
   </div>
+
+  <div class="req-hint">🎯 <b>วิชาสอบที่ใช้</b> บนการ์ด: <span class="req-chip tgat">TGAT</span> <span class="req-chip tpat">TPAT</span> <span class="req-chip alv">A-Level</span> = ระบุไว้ในข้อมูลต้นฉบับ · ป้ายเส้นประ <span class="req-chip tpat est">TPAT3*</span> = <b>คาดการณ์</b>จากชื่อคณะ/หลักสูตร (ข้อมูลต้นฉบับไม่ได้ระบุ) กรุณาตรวจสอบประกาศของมหาวิทยาลัยอีกครั้งก่อนสมัคร</div>
 
   <div class="results-head">
     <h2>พบ <b id="resultCount">–</b> หลักสูตรที่ตรงเงื่อนไข</h2>
@@ -396,6 +417,7 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   const compareTray = $('compareTray'), trayCount = $('trayCount'), trayChips = $('trayChips');
   const btnClearCompare = $('btnClearCompare'), btnOpenCompare = $('btnOpenCompare');
   const compareModal = $('compareModal'), modalBody = $('modalBody'), modalClose = $('modalClose');
+  const reqSelect = $('reqSelect');
   const catTabsEl = $('catTabs'), activeCatBadge = $('activeCatBadge');
   const campusRow = $('campusRow'), campusChipsEl = $('campusChips');
 
@@ -525,8 +547,60 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
   function compLabel(r){ if(r.k===null)return'ไม่มีข้อมูล'; return`แข่งขัน ${r.k}x`; }
   function recordKey(r){ return r.u+'|||'+r.p+'|||'+r.d; }
   function isSelected(r){ return compareList.some(x=>recordKey(x)===recordKey(r)); }
-  function escJs(s){ return JSON.stringify(s); }
+  function escJs(s){ return JSON.stringify(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
+  // ---- วิชาสอบ TGAT / TPAT ----
+  const TPAT_NAMES = {1:'ความถนัดแพทย์',2:'ศิลปกรรมศาสตร์',3:'วิทย์-เทคโนโลยี-วิศวกรรม',4:'สถาปัตยกรรมศาสตร์',5:'ครุศาสตร์-ศึกษาศาสตร์'};
+  const TPAT_RULES = [
+    [1,/แพทยศาสตรบัณฑิต/],
+    [2,/ศิลปกรรม|ทัศนศิลป์|ดนตรี|นาฏศิลป์|ดุริย/],
+    [3,/วิศวกรรม/],
+    [4,/สถาปัตย|ออกแบบภายใน|ผังเมือง/],
+    [5,/ครุศาสตร์|ศึกษาศาสตร์/]
+  ];
+  const reqCache = new WeakMap();
+  function getReq(r){
+    if(reqCache.has(r)) return reqCache.get(r);
+    const t = r.d||'';
+    const tgatNums = [...new Set([...t.matchAll(/TGAT\s?-?([123])/gi)].map(m=>m[1]))].sort();
+    const tpatNums = [...new Set([...t.matchAll(/TPAT\s?-?([1-5])/gi)].map(m=>+m[1]))].sort();
+    const hasTpatWord = /TPAT/i.test(t);
+    const hasAlevel = /A-?\s?level/i.test(t);
+    let tpat = [], est = false, anyTpat = false;
+    if(tpatNums.length) tpat = tpatNums;
+    else {
+      const key = r.f+' '+r.p;
+      tpat = TPAT_RULES.filter(x=>x[1].test(key)).map(x=>x[0]);
+      est = tpat.length>0;
+      anyTpat = hasTpatWord && !tpat.length;
+    }
+    const out = {
+      tgat: tgatNums.length ? tgatNums.map(n=>'TGAT'+n) : ['TGAT'],
+      tgatEst: !/TGAT/i.test(t),
+      tpat, tpatEst: est, anyTpat,
+      alevel: hasAlevel
+    };
+    reqCache.set(r,out);
+    return out;
+  }
+  function reqChips(r){
+    const q = getReq(r);
+    const chips = [];
+    q.tgat.forEach(x=>chips.push(`<span class="req-chip tgat${q.tgatEst?' est':''}" title="${q.tgatEst?'คาดการณ์: ระบบกลางส่วนใหญ่ใช้ TGAT (TGAT1 ภาษาอังกฤษ · TGAT2 การคิดอย่างมีเหตุผล · TGAT3 สมรรถนะการทำงาน)':'ระบุในข้อมูลต้นฉบับ'}">${x}${q.tgatEst?'*':''}</span>`));
+    q.tpat.forEach(n=>chips.push(`<span class="req-chip tpat${q.tpatEst?' est':''}" title="TPAT${n} ${TPAT_NAMES[n]}${q.tpatEst?' (คาดการณ์จากชื่อคณะ/หลักสูตร)':''}">TPAT${n} ${TPAT_NAMES[n]}${q.tpatEst?'*':''}</span>`));
+    if(q.anyTpat) chips.push(`<span class="req-chip tpat" title="ต้นฉบับระบุว่าใช้ TPAT แต่ไม่ระบุรหัส">TPAT (ดูประกาศ)</span>`);
+    if(q.alevel) chips.push(`<span class="req-chip alv">A-Level</span>`);
+    return chips.join('');
+  }
+  function reqMatch(r,v){
+    const q = getReq(r);
+    if(v==='NONE') return !q.tpat.length && !q.anyTpat;
+    return q.tpat.includes(+v.slice(4));
+  }
+  function reqText(r){
+    const q = getReq(r);
+    return (q.tgat.join(' ')+' '+q.tpat.map(n=>'TPAT'+n+' '+TPAT_NAMES[n]).join(' ')+(q.alevel?' A-Level':'')).toLowerCase();
+  }
   function card(r){
     const cls=compColor(r.k);
     const minPct=Math.max(0,Math.min(100,r.mn));
@@ -550,6 +624,7 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
           <button class="btn-compare${sel?' in-compare':''}" onclick="toggleCompare(${escJs(recordKey(r))})">${sel?`<span ${dotStyle}></span>`:''}${btnTxt}</button>
         </div>
       </div>
+      <div class="req-row"><span class="req-label">วิชาสอบ:</span>${reqChips(r)}</div>
       <div class="card-bottom">
         ${catChip}
         <div class="metric">รับ <b>${fmt(r.q)}</b> · สมัคร <b>${fmt(r.a)}</b></div>
@@ -624,11 +699,13 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     const rowComp=compareList.map((r,i)=>{const color=getCSSVar(COLORS[i]);if(r.k===null)return`<td><span style="color:var(--ink-soft)">–</span></td>`;return`<td><span class="cmp-comp" style="color:${color}">${r.k}x</span>${r.k===minComp?`<span class="winner-pill" style="background:${color}22;color:${color}">โอกาสสูง</span>`:''}</td>`;}).join('');
     const rowSeats=compareList.map((r,i)=>{const color=getCSSVar(COLORS[i]);return`<td><span class="seat-num" style="color:${color}">${fmt(r.q)}</span>${r.q===maxSeats?`<span class="winner-pill" style="background:${color}22;color:${color}">รับมากสุด</span>`:''}</td>`;}).join('');
     const rowApplied=compareList.map((r,i)=>{const color=getCSSVar(COLORS[i]);return`<td><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;color:${color}">${fmt(r.a)}</span></td>`;}).join('');
+    const rowReq=compareList.map(r=>`<td><div class="req-row" style="justify-content:center;margin-top:0">${reqChips(r)}</div></td>`).join('');
     const table=`<table class="cmp-table"><thead><tr><th>หัวข้อ</th>${hdrs}</tr></thead><tbody>
       <tr><th>คะแนนต่ำสุดที่ติด</th>${rowMin}</tr>
       <tr><th>คะแนนสูงสุดที่ติด</th>${rowMax}</tr>
       <tr><th>ช่วงคะแนน (0–100)</th>${rowBar}</tr>
       <tr><th>อัตราแข่งขัน (สมัคร:รับ)</th>${rowComp}</tr>
+      <tr><th>วิชาสอบ (TGAT/TPAT)</th>${rowReq}</tr>
       <tr><th>จำนวนรับ (คน)</th>${rowSeats}</tr>
       <tr><th>จำนวนผู้สมัคร (คน)</th>${rowApplied}</tr>
     </tbody></table>`;
@@ -688,9 +765,10 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     if(uniVal) list=list.filter(r=>r.u===uniVal);
     if(uniVal && activeCampus!=='all') list=list.filter(r=>r.c===activeCampus);
     if(facVal) list=list.filter(r=>r.f===facVal);
+    if(reqSelect.value) list=list.filter(r=>reqMatch(r,reqSelect.value));
     if(sq) list=list.filter(r=>
       r.u.toLowerCase().includes(sq)||r.c.toLowerCase().includes(sq)||
-      r.f.toLowerCase().includes(sq)||r.p.toLowerCase().includes(sq)||r.d.toLowerCase().includes(sq)
+      r.f.toLowerCase().includes(sq)||r.p.toLowerCase().includes(sq)||r.d.toLowerCase().includes(sq)||reqText(r).includes(sq)
     );
     filtered=applySort(list);
     shown=PAGE_SIZE;
@@ -708,9 +786,10 @@ footer{text-align:center;font-size:12px;color:var(--ink-soft);padding:16px 0 80p
     doFilter();
   });
   facSelect.addEventListener('change',doFilter);
+  reqSelect.addEventListener('change',doFilter);
   sortSelect.addEventListener('change',doFilter);
   resetBtn.addEventListener('click',()=>{
-    searchInput.value='';uniSelect.value='';facSelect.value='';sortSelect.value='default';
+    searchInput.value='';uniSelect.value='';facSelect.value='';reqSelect.value='';sortSelect.value='default';
     activeCat='all'; activeCampus='all';
     campusRow.classList.remove('show');
     document.querySelectorAll('.cat-tab').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'));
